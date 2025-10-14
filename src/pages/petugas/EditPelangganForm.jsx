@@ -2,7 +2,7 @@ import React from "react";
 import { API, cekStatus } from "../../api";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import LogoutButton from "../../components/LogoutButton";
+import Header from "../../components/Header";
 
 const EditPelangganForm = () => {
     const navigate = useNavigate();
@@ -40,10 +40,7 @@ const EditPelangganForm = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            < div className="flex justify-between items-center mb-8" >
-                <h1 className="text-3xl font-bold text-gray-800">Data Pelanggan</h1>
-                <LogoutButton />
-            </div >
+            <Header />
             <form onSubmit={onSubmit}>
                 <div>
                     <label>Nama:</label>

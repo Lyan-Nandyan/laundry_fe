@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { API, cekStatus } from "../../api";
-import LogoutButton from "../../components/LogoutButton";
+import Header from "../../components/Header";
 
 const DataPelanggan = () => {
     const [pelanggan, setPelanggan] = useState([]);
@@ -39,10 +39,7 @@ const DataPelanggan = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-800">Data Pelanggan</h1>
-                <LogoutButton />
-            </div>
+            <Header />
             <div style={{ maxWidth: 800, margin: "0 auto" }}>
                 <h2 className="text-2xl font-semibold mb-4">Daftar Pelanggan</h2>
                 <Link to="/petugas/pelanggan/tambah" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md">
