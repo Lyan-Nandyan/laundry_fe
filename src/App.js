@@ -4,6 +4,7 @@ import Login from "./pages/LoginPage";
 import LandingAdmin from "./pages/LandingAdmin";
 import LandingPetugas from "./pages/LandingPetugas";
 import LandingPelanggan from "./pages/LandigPelanggan";
+import AddPelanggan from "./pages/petugas/AddPelanggan";
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const token = localStorage.getItem("access_token");
@@ -25,7 +26,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-
+        {/*Route Admin */}
         <Route
           path="/admin"
           element={
@@ -34,6 +35,8 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+         {/*Route Petugas */}
         <Route
           path="/petugas"
           element={
@@ -42,6 +45,16 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/petugas/pelanggan/tambah"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <AddPelanggan />
+            </ProtectedRoute>
+          }
+        />
+
+        {/*Route Pelanggan */}
         <Route
           path="/pelanggan"
           element={

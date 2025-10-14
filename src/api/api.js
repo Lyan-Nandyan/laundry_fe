@@ -33,6 +33,13 @@ export const apiRequest = async (url, options = {}) => {
         return await apiRequest(url, options);
       } else {
         console.warn("Refresh token invalid, logging out...");
+        try {
+        await fetch(`${baseUrl}/auth/logout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refresh_token: refresh }),
+        });
+      } catch {}
         localStorage.clear();
         window.location.href = "/login";
       }
