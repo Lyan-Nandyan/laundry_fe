@@ -55,7 +55,7 @@ const LandingPetugas = () => {
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
-            <Link to="/petugas/pelanggan/tambah">
+            <Link to="/petugas/pelanggan">
               <div className="text-center">
                 <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">👥</span>

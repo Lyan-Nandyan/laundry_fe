@@ -5,27 +5,63 @@ import LandingAdmin from "./pages/LandingAdmin";
 import LandingPetugas from "./pages/LandingPetugas";
 import LandingPelanggan from "./pages/LandigPelanggan";
 import AddPelanggan from "./pages/petugas/AddPelanggan";
+import DataPelanggan from "./pages/petugas/DataPelanggan";
+
+const getStoredTokens = () => ({
+  access: localStorage.getItem("access_token"),
+  refresh: localStorage.getItem("refresh_token"),
+});
+
+const parseRolesFromToken = (token) => {
+  if (!token) return [];
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload?.realm_access?.roles || [];
+  } catch {
+    return [];
+  }
+};
+
+const chooseRedirectByRoles = (roles) => {
+  if (roles.includes("admin")) return "/admin";
+  if (roles.includes("petugas")) return "/petugas";
+  if (roles.includes("pelanggan")) return "/pelanggan";
+  return "/login";
+};
+
+const RedirectIfAuthenticated = ({ children }) => {
+  const { access, refresh } = getStoredTokens();
+  if (access && refresh) {
+    const roles = parseRolesFromToken(access);
+    const to = chooseRedirectByRoles(roles);
+    return <Navigate to={to} replace />;
+  }
+  return children;
+};
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const token = localStorage.getItem("access_token");
-  if (!token) return <Navigate to="/login" replace />;
+  const { access, refresh } = getStoredTokens();
+  if (!access || !refresh) return <Navigate to="/login" replace />;
 
-  // decode payload JWT
-  const payload = JSON.parse(atob(token.split(".")[1]));
-  const roles = payload?.realm_access?.roles || [];
-
-  // jika role cocok, lanjut
+  const roles = parseRolesFromToken(access);
   const hasAccess = roles.some((r) => allowedRoles.includes(r));
   if (!hasAccess) return <Navigate to="/login" replace />;
 
   return children;
-}
+};
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <RedirectIfAuthenticated>
+              <Login />
+            </RedirectIfAuthenticated>
+          }
+        />
         {/*Route Admin */}
         <Route
           path="/admin"
@@ -36,12 +72,20 @@ export default function App() {
           }
         />
 
-         {/*Route Petugas */}
+        {/*Route Petugas */}
         <Route
           path="/petugas"
           element={
             <ProtectedRoute allowedRoles={["petugas"]}>
               <LandingPetugas />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/pelanggan"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <DataPelanggan />
             </ProtectedRoute>
           }
         />
