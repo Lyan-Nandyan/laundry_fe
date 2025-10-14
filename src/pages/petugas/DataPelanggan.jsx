@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { API, cekStatus } from "../../api";
-import LogoutButton from "../../components/LogoutButton";
+import Header from "../../components/Header";
 
 const DataPelanggan = () => {
     const [pelanggan, setPelanggan] = useState([]);
@@ -22,13 +22,24 @@ const DataPelanggan = () => {
         fetchPelanggan();
     }, []);
 
+    const handleDelete = async (id) => {
+        if (!window.confirm("Apakah Anda yakin ingin menghapus pelanggan ini?")) return;
+        try {
+            const res = await API.delete(`/pelanggan/${id}`);
+            if (res.ok) {
+                setPelanggan((prev) => prev.filter((p) => p.id_pelanggan !== id));
+                alert("Pelanggan berhasil dihapus");
+            } else {
+                alert("Gagal menghapus pelanggan");
+            }
+        } catch (error) {
+            console.error("Error deleting pelanggan:", error);
+        }
+    };
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-800">Data Pelanggan</h1>
-                <LogoutButton />
-            </div>
+            <Header />
             <div style={{ maxWidth: 800, margin: "0 auto" }}>
                 <h2 className="text-2xl font-semibold mb-4">Daftar Pelanggan</h2>
                 <Link to="/petugas/pelanggan/tambah" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md">
@@ -44,6 +55,7 @@ const DataPelanggan = () => {
                             <th className="py-2 px-4 border-b border-gray-300 text-left">ID</th>
                             <th className="py-2 px-4 border-b border-gray-300 text-left">Nama</th>
                             <th className="py-2 px-4 border-b border-gray-300 text-left">No. HP</th>
+                            <th className="py-2 px-4 border-b border-gray-300 text-left">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,6 +64,14 @@ const DataPelanggan = () => {
                                 <td className="py-2 px-4 border-b border-gray-300">{p.id_pelanggan}</td>
                                 <td className="py-2 px-4 border-b border-gray-300">{p.nama}</td>
                                 <td className="py-2 px-4 border-b border-gray-300">{p.no_hp}</td>
+                                <td className="py-2 px-4 border-b border-gray-300">
+                                    <Link to={`/petugas/pelanggan/${p.id_pelanggan}`} className="text-blue-500 hover:underline mr-4">
+                                        Edit
+                                    </Link>
+                                    <button className="text-red-500 hover:underline" onClick={() => handleDelete(p.id_pelanggan)}>
+                                        Hapus
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
