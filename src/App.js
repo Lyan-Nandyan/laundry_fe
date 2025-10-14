@@ -7,6 +7,9 @@ import LandingPelanggan from "./pages/LandigPelanggan";
 import AddPelanggan from "./pages/petugas/AddPelanggan";
 import DataPelanggan from "./pages/petugas/DataPelanggan";
 import EditPelangganForm from "./pages/petugas/EditPelangganForm";
+import DataLayanan from "./pages/petugas/DataLayanan";
+import AddLayanan from "./pages/petugas/AddLayanan";
+import EditLayananForm from "./pages/petugas/EditLayananForm";
 
 const getStoredTokens = () => ({
   access: localStorage.getItem("access_token"),
@@ -103,6 +106,30 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles={["petugas"]}>
               <EditPelangganForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/layanan"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <DataLayanan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/layanan/tambah"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <AddLayanan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/layanan/:id"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <EditLayananForm />
             </ProtectedRoute>
           }
         />
