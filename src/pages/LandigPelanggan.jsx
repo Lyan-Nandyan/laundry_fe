@@ -23,7 +23,7 @@ const LandingPelanggan = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
-            <Link to={`/pelanggan/status/${id}`}>
+            <Link to={`/pelanggan/status`}>
             <div className="text-center">
               <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">👕</span>
@@ -35,7 +35,7 @@ const LandingPelanggan = () => {
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
-            <Link to="#">
+            <Link to="/pelanggan/riwayat">
             <div className="text-center">
               <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📋</span>

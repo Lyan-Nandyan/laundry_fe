@@ -14,6 +14,7 @@ import DataTransaksi from "./pages/petugas/DataTransaksi";
 import DataTransaksiSelesai from "./pages/petugas/DataTransaksiSelesai";
 import EditTransaksi from "./pages/petugas/EditTransaksi";
 import StatusCucian from "./pages/pelanggan/StatusCucian";
+import RiwayatTransaksi from "./pages/pelanggan/RiwayatTransaksi";
 
 const getStoredTokens = () => ({
   access: localStorage.getItem("access_token"),
@@ -172,10 +173,18 @@ export default function App() {
           }
         />
         <Route
-          path="/pelanggan/status/:id"
+          path="/pelanggan/status"
           element={
             <ProtectedRoute allowedRoles={["pelanggan"]}>
               <StatusCucian />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pelanggan/riwayat"
+          element={
+            <ProtectedRoute allowedRoles={["pelanggan"]}>
+              <RiwayatTransaksi />
             </ProtectedRoute>
           }
         />
