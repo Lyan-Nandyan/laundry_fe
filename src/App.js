@@ -1,12 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/LoginPage";
-import LandingAdmin from "./pages/LandingAdmin";
+import LandingPemilik from "./pages/LandingPemilik";
 import LandingPetugas from "./pages/LandingPetugas";
 import LandingPelanggan from "./pages/LandigPelanggan";
 import AddPelanggan from "./pages/petugas/AddPelanggan";
 import DataPelanggan from "./pages/petugas/DataPelanggan";
-import EditPelangganForm from "./pages/petugas/EditPelangganForm";
 import DataLayanan from "./pages/petugas/DataLayanan";
 import AddLayanan from "./pages/petugas/AddLayanan";
 import EditLayananForm from "./pages/petugas/EditLayananForm";
@@ -14,6 +13,9 @@ import AddTransaksi from "./pages/petugas/AddTransaksi";
 import DataTransaksi from "./pages/petugas/DataTransaksi";
 import DataTransaksiSelesai from "./pages/petugas/DataTransaksiSelesai";
 import EditTransaksi from "./pages/petugas/EditTransaksi";
+import StatusCucian from "./pages/pelanggan/StatusCucian";
+import RiwayatTransaksi from "./pages/pelanggan/RiwayatTransaksi";
+import HargaLayanan from "./pages/pelanggan/HargaLayanan";
 
 const getStoredTokens = () => ({
   access: localStorage.getItem("access_token"),
@@ -31,7 +33,7 @@ const parseRolesFromToken = (token) => {
 };
 
 const chooseRedirectByRoles = (roles) => {
-  if (roles.includes("admin")) return "/admin";
+  if (roles.includes("pemilik")) return "/pemilik";
   if (roles.includes("petugas")) return "/petugas";
   if (roles.includes("pelanggan")) return "/pelanggan";
   return "/login";
@@ -70,12 +72,12 @@ export default function App() {
             </RedirectIfAuthenticated>
           }
         />
-        {/*Route Admin */}
+        {/*Route Pemilik */}
         <Route
-          path="/admin"
+          path="/pemilik"
           element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <LandingAdmin />
+            <ProtectedRoute allowedRoles={["pemilik"]}>
+              <LandingPemilik />
             </ProtectedRoute>
           }
         />
@@ -102,14 +104,6 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles={["petugas"]}>
               <AddPelanggan />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/petugas/pelanggan/:id"
-          element={
-            <ProtectedRoute allowedRoles={["petugas"]}>
-              <EditPelangganForm />
             </ProtectedRoute>
           }
         />
@@ -176,6 +170,30 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles={["pelanggan"]}>
               <LandingPelanggan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pelanggan/status"
+          element={
+            <ProtectedRoute allowedRoles={["pelanggan"]}>
+              <StatusCucian />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pelanggan/riwayat"
+          element={
+            <ProtectedRoute allowedRoles={["pelanggan"]}>
+              <RiwayatTransaksi />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pelanggan/harga"
+          element={
+            <ProtectedRoute allowedRoles={["pelanggan"]}>
+              <HargaLayanan />
             </ProtectedRoute>
           }
         />

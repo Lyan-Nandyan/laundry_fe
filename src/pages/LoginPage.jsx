@@ -22,8 +22,8 @@ const Login = () => {
       const payload = JSON.parse(atob(data.access_token.split(".")[1]));
       const roles = payload?.realm_access?.roles || [];
 
-      if (roles.includes("admin")) {
-        window.location.href = "/admin";
+      if (roles.includes("pemilik")) {
+        window.location.href = "/pemilik";
       } else if (roles.includes("petugas")) {
         window.location.href = "/petugas";
       } else {
