@@ -1,7 +1,6 @@
 import React from "react";
 import { API, cekStatus } from "../../api";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 
 const AddTransaksi = () => {
@@ -12,7 +11,6 @@ const AddTransaksi = () => {
         id_layanan: "",
         berat: "",
     });
-    const navigate = useNavigate();
     useEffect(() => {
         // Fetch pelanggan data from API
         const fetchPelanggan = async () => {
@@ -51,7 +49,7 @@ const AddTransaksi = () => {
         try {
             const response = await API.post("/transaksi", formData);
             console.log("Transaksi berhasil ditambahkan:", response.data);
-            navigate("/petugas");
+            window.location.replace("/petugas/transaksi");
         } catch (error) {
             console.error("Error adding transaksi:", error);
         }

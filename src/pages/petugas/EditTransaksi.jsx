@@ -1,11 +1,10 @@
 import React from "react";
 import { API, cekStatus } from "../../api";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 
 const EditTransaksi = () => {
-    const navigate = useNavigate();
     const [pelanggan, setPelanggan] = useState([]);
     const [layanan, setLayanan] = useState([]);
     const { id } = useParams();
@@ -64,7 +63,7 @@ const EditTransaksi = () => {
             if (res.ok) {
                 alert("Transaksi berhasil diperbarui");
                 //navigasi ke halaman sebelumnya
-                navigate(-1);
+                window.location.replace("/petugas/transaksi");
             } else {
                 alert("Gagal memperbarui transaksi");
             }

@@ -6,6 +6,7 @@ const AddPelanggan = () => {
   const [nama, setNama] = useState("");
   const [noHp, setNoHp] = useState("");
   const [status, setStatus] = useState("");
+ 
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ const AddPelanggan = () => {
     const res = await API.post("/pelanggan", { nama, no_hp: noHp });
 
     setStatus(await cekStatus(res, "Pelanggan berhasil ditambahkan"));
+    window.location.replace("/petugas/pelanggan");
   };
 
   return (

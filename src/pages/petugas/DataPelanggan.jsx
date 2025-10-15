@@ -65,9 +65,6 @@ const DataPelanggan = () => {
                                 <td className="py-2 px-4 border-b border-gray-300">{p.nama}</td>
                                 <td className="py-2 px-4 border-b border-gray-300">{p.no_hp}</td>
                                 <td className="py-2 px-4 border-b border-gray-300">
-                                    <Link to={`/petugas/pelanggan/${p.id_pelanggan}`} className="text-blue-500 hover:underline mr-4">
-                                        Edit
-                                    </Link>
                                     <button className="text-red-500 hover:underline" onClick={() => handleDelete(p.id_pelanggan)}>
                                         Hapus
                                     </button>

@@ -1,11 +1,10 @@
 import React from "react";
 import { API, cekStatus } from "../../api";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 
 const EditLayananForm = () => {
-    const navigate = useNavigate();
     const [nama, setNama] = useState("");
     const [harga, setHarga] = useState("");
     const [status, setStatus] = useState("");
@@ -33,7 +32,7 @@ const EditLayananForm = () => {
         const res = await API.put(`/layanan/${id}`, { nama_layanan: nama, harga_per_kg: harga });
         setStatus(await cekStatus(res, "Layanan berhasil diupdate"));
         if (res.ok) {
-            navigate(-1);
+            window.location.replace("/petugas/layanan");
         }
     };
 

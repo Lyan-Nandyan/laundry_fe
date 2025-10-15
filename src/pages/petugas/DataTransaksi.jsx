@@ -59,8 +59,8 @@ const DataTransaksi = () => {
                         {transaksi.map((t, index) => (
                             <tr key={t.id_transaksi}>
                                 <td className="py-2 px-4 border-b">{index + 1}</td>
-                                <td className="py-2 px-4 border-b">{t.pelanggan.nama}</td>
-                                <td className="py-2 px-4 border-b">{t.layanan.nama_layanan}</td>
+                                <td className="py-2 px-4 border-b">{t.pelanggan?.nama  || "Deleted"}</td>
+                                <td className="py-2 px-4 border-b">{t.layanan?.nama_layanan || "Deleted"}</td>
                                 <td className="py-2 px-4 border-b">{t.berat}</td>
                                 <td className="py-2 px-4 border-b">{t.total_harga}</td>
                                 <td className="py-2 px-4 border-b">{t.status}</td>

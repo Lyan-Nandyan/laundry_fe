@@ -17,6 +17,7 @@ const AddLayanan = () => {
         });
         console.log(nama, harga);
         setStatus(await cekStatus(res, "Layanan berhasil ditambahkan"));
+        window.location.replace("/petugas/layanan");
     };
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
