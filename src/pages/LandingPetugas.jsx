@@ -22,33 +22,39 @@ const LandingPetugas = () => {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
-            <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📝</span>
+            <Link to="/petugas/transaksi/tambah">
+              <div className="text-center">
+                <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📝</span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Transaksi Baru</h3>
+                <p className="text-gray-600 text-sm">Buat transaksi laundry baru</p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Transaksi Baru</h3>
-              <p className="text-gray-600 text-sm">Buat transaksi laundry baru</p>
-            </div>
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
-            <div className="text-center">
-              <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">⏳</span>
+            <Link to="/petugas/transaksi">
+              <div className="text-center">
+                <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">⏳</span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Status Cucian</h3>
+                <p className="text-gray-600 text-sm">Update status cucian pelanggan</p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Status Cucian</h3>
-              <p className="text-gray-600 text-sm">Update status cucian pelanggan</p>
-            </div>
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+            <Link to="/petugas/transaksi/selesai">
             <div className="text-center">
               <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">✅</span>
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Selesai</h3>
-              <p className="text-gray-600 text-sm">Tandai cucian selesai</p>
+              <p className="text-gray-600 text-sm">Status Cucian selesai</p>
             </div>
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
@@ -65,13 +71,13 @@ const LandingPetugas = () => {
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
             <Link to="/petugas/layanan">
-            <div className="text-center">
-              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏷️</span>
+              <div className="text-center">
+                <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🏷️</span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Layanan</h3>
+                <p className="text-gray-600 text-sm">Kelola layanan laundry</p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Layanan</h3>
-              <p className="text-gray-600 text-sm">Kelola layanan laundry</p>
-            </div>
             </Link>
           </div>
         </div>

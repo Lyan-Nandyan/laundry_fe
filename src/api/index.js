@@ -15,6 +15,11 @@ export const API = {
       method: "PUT",
       body: JSON.stringify(body),
     }),
+  patch: (path, body) =>
+    apiRequest(`${baseUrl}${path}`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    }),
   delete: (path) =>
     apiRequest(`${baseUrl}${path}`, {
       method: "DELETE",

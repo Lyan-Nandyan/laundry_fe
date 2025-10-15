@@ -27,7 +27,7 @@ export const apiRequest = async (url, options = {}) => {
 
   // Jika token expired
   if (res.status === 401 && refresh) {
-    alert("Access token expired → Refreshing...");
+    //alert("Access token expired → Refreshing...");
     if (!isRefreshing) {
       isRefreshing = true;
       refreshPromise = fetch(`${baseUrl}/auth/refresh`, {
@@ -53,9 +53,6 @@ export const apiRequest = async (url, options = {}) => {
           localStorage.clear();
           window.location.href = "/login";
         })
-        .finally(() => {
-          isRefreshing = false;
-        });
     }
 
     const newAccessToken = await refreshPromise;
