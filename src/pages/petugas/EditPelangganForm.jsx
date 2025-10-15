@@ -33,7 +33,7 @@ const EditPelangganForm = () => {
         const res = await API.put(`/pelanggan/${id}`, { nama, no_hp: noHp });
         setStatus(await cekStatus(res, "Pelanggan berhasil diupdate"));
         if (res.ok) {
-            navigate("/petugas/pelanggan");
+            navigate(-1);
         }
     };
 

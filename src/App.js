@@ -10,6 +10,10 @@ import EditPelangganForm from "./pages/petugas/EditPelangganForm";
 import DataLayanan from "./pages/petugas/DataLayanan";
 import AddLayanan from "./pages/petugas/AddLayanan";
 import EditLayananForm from "./pages/petugas/EditLayananForm";
+import AddTransaksi from "./pages/petugas/AddTransaksi";
+import DataTransaksi from "./pages/petugas/DataTransaksi";
+import DataTransaksiSelesai from "./pages/petugas/DataTransaksiSelesai";
+import EditTransaksi from "./pages/petugas/EditTransaksi";
 
 const getStoredTokens = () => ({
   access: localStorage.getItem("access_token"),
@@ -130,6 +134,38 @@ export default function App() {
           element={
             <ProtectedRoute allowedRoles={["petugas"]}>
               <EditLayananForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/transaksi/tambah"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <AddTransaksi />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/transaksi"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <DataTransaksi />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/transaksi/selesai"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <DataTransaksiSelesai />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/petugas/transaksi/:id"
+          element={
+            <ProtectedRoute allowedRoles={["petugas"]}>
+              <EditTransaksi />
             </ProtectedRoute>
           }
         />
