@@ -7,7 +7,7 @@ const LandingPetugas = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 animate-fade-in">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <Header />
+        <Header link="/petugas" title="Dashboard Petugas" />
 
         {/* Welcome Card */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">

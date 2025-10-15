@@ -1,12 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 const LandingPelanggan = () => {
+  const id = localStorage.getItem("user_id");
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-rose-100 animate-fade-in">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <Header />
+        <Header link="/pelanggan" title="Dashboard Pelanggan" />
 
         {/* Welcome Card */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
@@ -21,6 +23,7 @@ const LandingPelanggan = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+            <Link to={`/pelanggan/status/${id}`}>
             <div className="text-center">
               <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">👕</span>
@@ -28,9 +31,11 @@ const LandingPelanggan = () => {
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Status Cucian</h3>
               <p className="text-gray-600 text-sm">Lihat status cucian Anda saat ini</p>
             </div>
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+            <Link to="#">
             <div className="text-center">
               <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📋</span>
@@ -38,9 +43,11 @@ const LandingPelanggan = () => {
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Riwayat Transaksi</h3>
               <p className="text-gray-600 text-sm">Lihat riwayat laundry Anda</p>
             </div>
+            </Link>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+            <Link to="#">
             <div className="text-center">
               <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💰</span>
@@ -48,7 +55,21 @@ const LandingPelanggan = () => {
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Harga Layanan</h3>
               <p className="text-gray-600 text-sm">Cek daftar harga layanan kami</p>
             </div>
+            </Link>
           </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+            <Link to="#">
+              <div className="text-center">
+                <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">⚙️</span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Setting</h3>
+                <p className="text-gray-600 text-sm">Buka pengaturan akun Anda</p>
+              </div>
+            </Link>
+          </div>
+
         </div>
 
         {/* Quick Info */}

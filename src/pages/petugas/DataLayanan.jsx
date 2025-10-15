@@ -37,7 +37,7 @@ const DataLayanan = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <Header />
+            <Header link="/petugas" title="Dashboard Petugas" />
             <div style={{ maxWidth: 800, margin: "0 auto" }}>
                 <h2 className="text-2xl font-semibold mb-4">Daftar Layanan</h2>
                 <Link to="/petugas/layanan/tambah" className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md">

@@ -22,7 +22,7 @@ const AddLayanan = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <Header />
+            <Header link="/petugas" title="Dashboard Petugas" />
             <div style={{ maxWidth: 420, margin: "40px auto" }}>
                 <h2>Tambah Layanan</h2>
                 <form onSubmit={onSubmit}>

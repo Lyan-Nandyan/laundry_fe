@@ -57,7 +57,7 @@ const AddTransaksi = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <Header />
+            <Header link="/petugas" title="Dashboard Petugas" />
             <div style={{ maxWidth: 600, margin: "0 auto" }}>
                 <h2 className="text-2xl font-semibold mb-4">Tambah Transaksi</h2>
                 <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">

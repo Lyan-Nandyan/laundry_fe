@@ -74,7 +74,7 @@ const EditTransaksi = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8 animate-fade-in">
             {/* Header */}
-            <Header />
+            <Header link="/petugas" title="Dashboard Petugas" />
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Pelanggan:</label>
