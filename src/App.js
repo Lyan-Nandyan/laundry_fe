@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/LoginPage";
-import LandingAdmin from "./pages/LandingAdmin";
+import LandingPemilik from "./pages/LandingPemilik";
 import LandingPetugas from "./pages/LandingPetugas";
 import LandingPelanggan from "./pages/LandigPelanggan";
 import AddPelanggan from "./pages/petugas/AddPelanggan";
@@ -33,7 +33,7 @@ const parseRolesFromToken = (token) => {
 };
 
 const chooseRedirectByRoles = (roles) => {
-  if (roles.includes("admin")) return "/admin";
+  if (roles.includes("pemilik")) return "/pemilik";
   if (roles.includes("petugas")) return "/petugas";
   if (roles.includes("pelanggan")) return "/pelanggan";
   return "/login";
@@ -72,12 +72,12 @@ export default function App() {
             </RedirectIfAuthenticated>
           }
         />
-        {/*Route Admin */}
+        {/*Route Pemilik */}
         <Route
-          path="/admin"
+          path="/pemilik"
           element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <LandingAdmin />
+            <ProtectedRoute allowedRoles={["pemilik"]}>
+              <LandingPemilik />
             </ProtectedRoute>
           }
         />
